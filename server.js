@@ -64,6 +64,9 @@ app.use(session({
 // FILE UPLOADS
 // Multer handles the ID photo during signup.
 // Files are saved to public/uploads/ with a timestamp prefix.
+// ⚠️  NOTE: Files stored locally will NOT persist on Render after
+//    restarts or redeployments. Consider Cloudinary or S3 for
+//    production if file persistence is critical.
 // ─────────────────────────────────────────────────────────────
 const storage = multer.diskStorage({
     destination: (req, file, cb) => cb(null, 'public/uploads/'),
