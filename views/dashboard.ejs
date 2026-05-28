@@ -1,0 +1,13 @@
+<%- include('partials/head') %>
+<%- include('partials/sidebar') %>
+<%- include('partials/navbar') %>
+
+<div class="view-content" style="padding: 20px;">
+  <section class="welcome-section">
+    <h1>Welcome back, <%= user ? user.full_name : 'Guest' %>!</h1>
+  </section>
+  <section class="quick-stats" style="margin-top: 20px;">
+  </section>
+</div>
+
+<%- include('partials/footer') %>

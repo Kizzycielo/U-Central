@@ -1,0 +1,33 @@
+            </div>
+        </main>
+    </div>
+</div>
+
+<div id="postModal" class="modal-overlay hidden">
+    <div class="modal-content">
+        <div class="modal-title" id="modalTitle">
+            Create post
+        </div>
+        <select id="postTypeSelect">
+            <option value="announcement">
+                Announcements
+            </option>
+            <option value="event">
+                Events
+            </option>
+        </select>
+        <textarea id="postContentInput" rows="4" placeholder="Add post"></textarea>
+        <div class="modal-buttons">
+            <button class="cancel-btn" id="cancelPostBtn">
+                Cancel
+            </button>
+            <button class="btn-primary" id="submitPostBtn" style="margin:0;width:auto;padding:0.6rem 1.4rem;">
+                Post
+            </button>
+        </div>
+    </div>
+</div>
+<div id="toast" class="toast"></div>
+<script src="/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<main class="main-content">
+    <div class="top-navbar">
+        <div class="active-pill">
+            <span class="pulse-dot"></span>
+            <span id="activeUserCount">0</span>&nbsp;online
+        </div>
+        <div class="user-menu" id="userMenuBtn">
+            <div class="user-pill">
+                <i class="far fa-user-circle"></i>
+                <span id="dashboardUserName">
+                    <%= user ? user.full_name : 'Guest' %>
+                </span>
+                <span id="dashboardRoleBadge" class="role-badge">
+                    <%= user ? user.role : '' %>
+                </span>
+                <i class="fas fa-chevron-down" style="font-size:0.65rem;"></i>
+            </div>
+            <div id="userDropdown" class="user-dropdown hidden">
+                <a href="#" data-setting="profile"><i class="fas fa-user-edit"></i> Edit Profile</a>
+                <hr class="dropdown-divider">
+                <a href="/logout" id="logoutBtn" style="color:var(--red)"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+            </div>
+        </div>
+    </div>
+    <% if (!user || user.role === 'Guest') { %>
+    <div id="guestModeBanner" style="background:#2028B6;border-bottom:1px solid #151b7a;padding:0.5rem 1.75rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;">
+        <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.82rem;color:white;">
+            <i class="fas fa-eye" style="color:#fde68a;"></i>
+            <span><strong>Browsing as Guest</strong> — You can view content but cannot interact. Log in to post.</span>
+        </div>
+        <div style="display:flex;gap:0.5rem;">
+            <a href="/signup" style="background:white;color:#2028B6;border:none;padding:0.35rem 0.9rem;border-radius:1rem;text-decoration:none;font-size:0.78rem;font-weight:700;">
+                Sign Up
+            </a>
+            <a href="/login" style="background:transparent;color:white;border:1.5px solid white;padding:0.35rem 0.9rem;border-radius:1rem;text-decoration:none;font-size:0.78rem;font-weight:600;">
+                Log In
+            </a>
+        </div>
+    </div>
+    <%} %>

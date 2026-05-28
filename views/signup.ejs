@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head') %>
+    <body>
+    <link rel="stylesheet" href="/css/style.css">
+    <div id="authPage" class="auth-page">
+        <div class="auth-card">
+            <div class="auth-banner">
+                <h1>
+                    U‑Central
+                </h1>
+                <p id="authSub">
+                    Create your account
+                </p>
+            </div>
+            <div class="auth-body">
+                <form action="/signup" method="POST" enctype="multipart/form-data">
+                    <div class="input-group">
+                        <input type="text" id="signupName" name="fullName" class="input-field" placeholder="Full name" required>
+                        </div>
+                    <div class="input-group">
+                        <input type="email" id="signupEmail" name="email" class="input-field" placeholder="Email" autocomplete="email" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="signupPassword" name="password" class="input-field" placeholder="Password" autocomplete="new-password" required>
+                    </div>
+                    <div style="margin-bottom:0.75rem;">
+                        <div style="font-size:0.82rem;font-weight:600;color:var(--text-mid);margin-bottom:0.4rem;">
+                            I am a:
+                        </div>
+                        <div class="role-picker">
+                            <label class="role-pick-opt selected" id="rp-student" onclick="selectRole('student')">
+                                <input type="radio" name="roleRadio" value="student" checked style="display:none"> 
+                                <span class="role-pick-label">
+                                    Student
+                                </span>
+                                </label>
+                                <label class="role-pick-opt" id="rp-faculty" onclick="selectRole('faculty')">
+                                <input type="radio" name="roleRadio" value="faculty" style="display:none"> 
+                                <span class="role-pick-label">
+                                    Faculty
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div id="idUploadGroup" class="input-group">
+                        <div style="font-size:0.82rem;font-weight:600;color:var(--text-mid);margin-bottom:0.4rem;">
+                            Upload your ID (Your ID photo will be temporarily saved for verification):
+                        </div>
+                        <input type="file" id="signupIDPhoto" name="IDPhoto" class="input-field" accept="image/png, image/jpeg, image/jpg" required>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="termsAgree" required> 
+                        <label for="termsAgree">
+                            I agree to the Terms of Service & Privacy Policy
+                        </label>
+                    </div>  
+                    <button type="submit" class="btn-primary" style="margin-top: 1rem;">
+                        Sign up
+                    </button>
+                </form>
+                <div class="or-divider">
+                    <span>
+                        OR
+                    </span>
+                </div>
+
+                <div class="toggle-auth">
+                    Have an account? 
+                    <a href="/login">
+                        Log in
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    function selectRole(role) 
+    {
+        document.getElementById('rp-student').classList.remove('selected');
+        document.getElementById('rp-faculty').classList.remove('selected');
+        document.getElementById('rp-' + role).classList.add('selected');
+        document.querySelector(`input[value="${role}"]`).checked = true;
+    }
+</script>
+
+</body>
+</html>
