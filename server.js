@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
 const multer = require('multer');
 const { Pool } = require('pg');
 const session = require('express-session');
@@ -62,12 +63,14 @@ app.use(session({
 
 // ─────────────────────────────────────────────────────────────
 // FILE UPLOADS
-// Multer handles the ID photo during signup.
-// Files are saved to public/uploads/ with a timestamp prefix.
-// ⚠️  NOTE: Files stored locally will NOT persist on Render after
-//    restarts or redeployments. Consider Cloudinary or S3 for
-//    production if file persistence is critical.
+
 // ─────────────────────────────────────────────────────────────
+
+const uploadDir = path.join(__dirname, 'public/uploads');
+if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir, { recursive: true });
+}
+
 const storage = multer.diskStorage({
     destination: (req, file, cb) => cb(null, 'public/uploads/'),
     filename: (req, file, cb) => cb(null, Date.now() + '-' + file.originalname)
